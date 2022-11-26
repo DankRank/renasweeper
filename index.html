@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Renasweeper</title>
+<link rel="icon" href="favicon.png">
+<script>
+"use strict";
+window.addEventListener('error', e => {alert(`${e.filename}:${e.lineno}:${e.colno}:${e.message}`);});
+</script>
+<script src="renasweeper.js"></script>
+<style>
+body {
+	background-color:#000;
+}
+.outercontainer {
+	margin:0 auto;
+	position:relative;
+	width:640px;
+	height:480px;
+	background-image:url(gfx/Furiker_b.JPG);
+	overflow:hidden;
+}
+.container {
+	position:absolute;
+	left:0;
+	top:0;
+}
+@font-face {
+	font-family:osaka_unicode;
+	src:url(default.ttf);
+}
+.textoverlay {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:640px;
+	height:480px;
+	background-color:rgba(0, 0, 0, 0.4);
+	font-family:osaka_unicode;
+	font-size:50px;
+	color:#fff;
+	text-shadow:1px 1px #000;
+}
+.textoverlay span {
+	position:relative;
+	top:200px;
+	left:50px;
+}
+</style>
+<div class="outercontainer"><div class="container"></div></div>
+<audio id="audiobgm" src="snd/med1.mp3" loop></audio>
+<audio id="audiose1" src="snd/lsys31.ogg"></audio>
+<audio id="audiose2" src="snd/500200804.ogg"></audio>
+<img style="display:none" src="gfx/Furiker_b.JPG">
+<img style="display:none" src="gfx/bigkaii.png">
+<img style="display:none" src="gfx/cell0_30px.png">
+<img style="display:none" src="gfx/cell0_60px.png">
+<img style="display:none" src="gfx/cell1_30px.png">
+<img style="display:none" src="gfx/cell1_60px.png">
+<img style="display:none" src="gfx/cell2_30px.png">
+<img style="display:none" src="gfx/cell2_60px.png">
+<img style="display:none" src="gfx/cell3_30px.png">
+<img style="display:none" src="gfx/cell3_60px.png">
+<img style="display:none" src="gfx/cell4_30px.png">
+<img style="display:none" src="gfx/cell4_60px.png">
+<img style="display:none" src="gfx/cell5_30px.png">
+<img style="display:none" src="gfx/cell5_60px.png">
+<img style="display:none" src="gfx/cell6_30px.png">
+<img style="display:none" src="gfx/cell6_60px.png">
+<img style="display:none" src="gfx/cell7_30px.png">
+<img style="display:none" src="gfx/cell7_60px.png">
+<img style="display:none" src="gfx/cell8_30px.png">
+<img style="display:none" src="gfx/cell8_60px.png">
+<img style="display:none" src="gfx/cell9_30px.png">
+<img style="display:none" src="gfx/cell9_60px.png">
+<img style="display:none" src="gfx/cellflag_30px.png">
+<img style="display:none" src="gfx/cellflag_60px.png">
+<img style="display:none" src="gfx/cellnormal_30px.png">
+<img style="display:none" src="gfx/cellnormal_60px.png">
