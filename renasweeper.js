@@ -77,14 +77,16 @@ function js_image(id, p, x, y) {
 	}
 	el.style.backgroundImage = "url("+p+")";
 }
-function js_button(id) {
-	js_spr[id].addEventListener("mousedown", e => { if (e.button == 0) { click(id); e.stopPropagation(); e.preventDefault(); } });
+function js_button(id, btnid) {
+	if (btnid === undefined) { btnid = id; }
+	js_spr[id].addEventListener("mousedown", e => { if (e.button == 0) { click(btnid); e.stopPropagation(); e.preventDefault(); } });
 }
 function newgame() {
 	container.innerHTML = "";
 	js_spr = {};
 	js_image(999, "gfx/cellflag"+gfxsuf, 0, 0);
-	js_spr[999].style.display = "none";
+	js_spr[999].style.opacity = 0;
+	js_button(999, -1);
 	reset_grid();
 	click = click_ingame;
 }
@@ -117,7 +119,7 @@ function flipflag(p) {
 }
 function flipflagmode() {
 	flagmode = 1-flagmode;
-	js_spr[999].style.display = flagmode == 1 ? "" : "none";
+	js_spr[999].style.opacity = flagmode;
 }
 function reset_grid() {
 	closed_cells = gridwidth*gridheight;
@@ -165,7 +167,7 @@ function click_ingame(p) {
 		show_solved_grid();
 		container.className = "container";
 		js_image(999, "gfx/cellnormal"+gfxsuf, 0, 0);
-		js_spr[999].style.display = flagmode == 1 ? "" : "none";
+		js_spr[999].style.opacity = flagmode;
 		oldcontainer.style.zIndex = 1;
 		outer.appendChild(container);
 		oldcontainer.animate([{opacity: 1}, {opacity: 0}], {duration: 400, fill: "forwards"}).finished.then(() => {
@@ -209,8 +211,7 @@ function click_dohau(p) {
 		if (scale > 322) { scale = 322; }
 		pushframe();
 	}
-	hau.animate(frames, {duration: frames.length * 10, fill: "forwards"}).finished.then(() => {
-		// output text
+	hau.animate(frames, {duration: frames.length * hautime, fill: "forwards"}).finished.then(() => {
 		const text = textoverlay("You've been taken home");
 		click = () => {
 			text.remove();
